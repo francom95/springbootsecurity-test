@@ -1,0 +1,3 @@
+- Agregar csrf y otros tipos de seguridades.
+- ver si se puede generar un token al crear un usuario o se debe poner alguna constante de token invalido ya que no se inicia sesion al hacer signUp. Creo que esta es la mejor opcion.
+- Ver comentarios.

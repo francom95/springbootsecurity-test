@@ -1,6 +1,5 @@
 package com.pruebasSpringSecurity.pruebasSpringSecurity.service;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

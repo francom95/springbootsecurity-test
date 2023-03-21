@@ -3,7 +3,6 @@ package com.pruebasSpringSecurity.pruebasSpringSecurity.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -31,13 +30,13 @@ public class SecurityConfig {
     		.and()
     		.addFilterBefore(new UsernamePasswordAuthFilter(userAuthenticationProvider), BasicAuthenticationFilter.class)
     		.addFilterBefore(new JwtAuthFilter(userAuthenticationProvider), UsernamePasswordAuthFilter.class)
-    		.csrf().disable()
-    		//.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-    		//.and()
+    		//.csrf().disable()
+    		.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+    		.and()
     		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
     		.and()
     		.authorizeHttpRequests(requests -> requests
-    	    		//.requestMatchers(HttpMethod.GET, "/auth/csrf").permitAll()
+    	    		.requestMatchers(HttpMethod.GET, "/auth/csrf").permitAll()
     	    		.requestMatchers(HttpMethod.POST, "/auth/signIn", "/auth/signUp").permitAll()    				
     	    		.anyRequest().authenticated()
 			);
